@@ -5,6 +5,7 @@ library(tidyr)
 library(ggplot2)
 library(janitor)
 library(DescTools)
+library(car)
 
 ## Funciones necesarias ##
 
@@ -229,8 +230,23 @@ t.test(pacientes_diab_glucosa$Glucosa,
 
 # 9 Corroborar la conclusión del punto 4 con un test de hipótesis.
 
+#Prueba de normalidad
+
+ad.test(pacientes_diab_pad$PAD)  #Rechazo H0
+ad.test(pacientes_no_diab_pad$PAD)  #Rechazo H0
+
+
+#prueba de igualdad de varianza
+
+leveneTest (PAD ~ DBT, data) #varianzas iguales
+
+#No rechazo H0
+
+# Prueba de igualdad de media
 
 t.test(x = pacientes_diab_pad$PAD,
        y= pacientes_no_diab_pad$PAD,
        mu = 0,
+       var.equal = TRUE,
        conf.level = 0.95)
+# Rechazo H0
