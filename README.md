@@ -1,2 +1,2 @@
 # MCD
-Repositorio para Maestria en Ciencia de Datos
+Repositorio para Maestria en Ciencia de Datos.
